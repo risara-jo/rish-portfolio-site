@@ -1,6 +1,8 @@
 import GroundScene from '@/components/GroundScene'
 import Rocks from '@/components/Rocks'
 import Portal from '@/components/Portal'
+import Skybox from '@/components/Skybox'
+import FloatingParticles from '@/components/FloatingParticles'
 
 
 export default function LandingScene() {
@@ -11,7 +13,11 @@ export default function LandingScene() {
 
         {/* 🪨 Portal Model */}
       <Portal position={[0, -20, 0]} scale={20} />
-      <Portal position={[0, -20, 0]} scale={20} rotation={[0, Math.PI / 270, 0]} />
+      <Portal position={[0, -25, 0]} scale={20} rotation={[0, Math.PI / 270, 0]} />
+
+      <Skybox position={[0, 0, 0]} />
+
+      {/*<FloatingParticles count={2000} />*/}
 
     </>
   )

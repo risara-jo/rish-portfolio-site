@@ -11,16 +11,23 @@ export default function Home() {
         <title>Rish Portfolio</title>
       </Head>
       <main className="h-screen w-screen">
-        <Canvas shadows camera={{ position: [0, 5, 10], fov: 50 }}>
+      <Canvas
+            shadows
+            camera={{ position: [0, 5, 10], fov: 50 }}
+            style={{ background: '#0a0a0a' }} // near-black background
+            >
+
           {/* Lighting */}
-          <ambientLight intensity={0.3} />
-          <directionalLight
-            position={[10, 20, 10]}
-            intensity={1}
+            <ambientLight intensity={0.4} />
+            <directionalLight
+            position={[15, 25, 15]}
+            intensity={1.5}
             castShadow
-            shadow-mapSize-width={1024}
-            shadow-mapSize-height={1024}
-          />
+            shadow-mapSize-width={2048}
+            shadow-mapSize-height={2048}
+            shadow-bias={-0.0001}
+            />
+
 
           {/* 🔆 Bloom Effect */}
           <EffectComposer>
