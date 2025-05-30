@@ -2,6 +2,8 @@ import Head from 'next/head'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import LandingScene from '@/scenes/LandingScene'
+import { AxesHelper } from 'three'
+import { GridHelper } from 'three'
 
 export default function Home() {
   return (
@@ -19,6 +21,17 @@ export default function Home() {
             shadow-mapSize-width={1024}
             shadow-mapSize-height={1024}
           />
+
+          {/* Debug helpers */}
+        <gridHelper args={[1000, 1000]} />
+        <axesHelper args={[10]} />
+            {/* 
+                Note: The ambient light is set to a higher intensity to brighten the scene.
+                The directional light is positioned to cast shadows and illuminate the scene.
+            */}
+        <ambientLight intensity={1} />
+        <directionalLight position={[10, 20, 10]} intensity={2} />
+
           <LandingScene />
           <OrbitControls />
         </Canvas>
