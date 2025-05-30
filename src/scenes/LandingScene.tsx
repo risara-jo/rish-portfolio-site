@@ -1,42 +1,18 @@
-import { useRef, useState } from 'react'
-import { useFrame } from '@react-three/fiber'
-import { Circle, Plane, Sphere } from '@react-three/drei' // add Sphere
-import AnimeCharacter from '@/components/AnimeCharacter'
-import AnimeSky from '@/components/AnimeSky'
+import GroundScene from '@/components/GroundScene'
+import Rocks from '@/components/Rocks'
+import Portal from '@/components/Portal'
+
 
 export default function LandingScene() {
-  const charRef = useRef<any>(null)
-  const [hovered, setHovered] = useState(false)
-
-  useFrame(() => {
-    if (charRef.current) {
-      
-      charRef.current.scale.setScalar(hovered ? 1.2 : 1.0)
-    }
-  })
-
   return (
     <>
-      {/* 🔆 Glowing Sun */}
-      <Circle args={[10, 64, 64]} position={[0, -5, -15]}>
-        <meshStandardMaterial emissive="#FFA500" emissiveIntensity={2} color="#FFA500" />
-      </Circle>
-      
+      {/* 🏜️ Ground Diorama Model */}
+      <GroundScene scale={0.5} position={[0, -5, 0]} />
 
-      {/* ✅ Lawn Ground */}
-      <Plane args={[1000, 1000]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-        <meshStandardMaterial color="#1a3c2c" />
-      </Plane>
+        {/* 🪨 Portal Model */}
+      <Portal position={[0, -20, 0]} scale={20} />
+      <Portal position={[0, -20, 0]} scale={20} rotation={[0, Math.PI / 270, 0]} />
 
-      {/* 🎎 Anime Character */}
-      <group
-        ref={charRef}
-        position={[0, 0, 0]}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
-      >
-        <AnimeCharacter scale={5} />
-      </group>
     </>
   )
 }
