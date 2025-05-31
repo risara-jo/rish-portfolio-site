@@ -9,26 +9,16 @@ export default function Home() {
       <Head>
         <title>Rish Portfolio</title>
       </Head>
-      <main className="h-[300vh] w-screen"> {/* make page scrollable */}
+      <main className="h-screen w-screen overflow-y-scroll">
         <Canvas
           shadows
-          camera={{ position: [-10, 15, -20], fov: 25 }}
-          style={{ background: 'transparent', height: '100vh', width: '100vw', position: 'fixed', top: 0 }}
+          camera={{ position: [0, 10, 20], fov: 35 }}
+          style={{ background: '#0f172a' }} // Dark blue-ish
         >
-          {/* Lighting */}
-          <ambientLight intensity={1.2} />
-          <directionalLight
-            position={[0, 30, 10]}
-            intensity={1.5}
-            castShadow
-            shadow-mapSize-width={1024}
-            shadow-mapSize-height={1024}
-          />
-          <hemisphereLight color={'white'} groundColor={'black'} intensity={0.5} />
-
-          {/* Landing 3D Scene */}
           <LandingScene />
         </Canvas>
+        {/* Invisible height to enable scrolling */}
+        <div style={{ height: '4000px' }} />
       </main>
     </>
   )

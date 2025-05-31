@@ -1,30 +1,31 @@
 // src/scenes/LandingScene.tsx
-import { useEffect, useRef } from 'react'
 import { useThree, useFrame } from '@react-three/fiber'
+import { useEffect, useRef } from 'react'
 import AnimeSky from '@/components/AnimeSky'
 import AnimatedPlane from '@/components/AnimatedPlane'
 import LandingText from '@/components/LandingText'
-import * as THREE from 'three'
 
 export default function LandingScene() {
   const { camera } = useThree()
   const scrollRef = useRef(0)
 
   useEffect(() => {
-    const handleScroll = () => {
+    const onScroll = () => {
       scrollRef.current = window.scrollY
     }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useFrame(() => {
     const scrollY = scrollRef.current
-    const targetY = 15 + scrollY * 0.01
-    const targetZ = -20 + scrollY * 0.02
-    camera.position.set(-10, targetY, targetZ)
-    camera.lookAt(new THREE.Vector3(0, 0, 0))
+    const angle = scrollY * 0.001
+
+    const radius = 20
+    camera.position.x = Math.sin(angle) * radius
+    camera.position.z = Math.cos(angle) * radius
+    camera.position.y = 10 + Math.sin(angle * 0.5) * 5 // slight vertical curve
+    camera.lookAt(0, 0, -5)
   })
 
   return (

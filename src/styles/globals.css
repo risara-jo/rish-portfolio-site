@@ -1,8 +1,13 @@
 html,
-body,
-#__next {
-  height: 100%;
+body {
   margin: 0;
   padding: 0;
-  overflow-y: scroll; /* allow vertical scroll for camera movement */
+  height: auto;        /* allow scrolling */
+  overflow-x: hidden;
+  background: black;
+}
+
+#__next {
+  height: auto;
+  min-height: 100vh;
 }

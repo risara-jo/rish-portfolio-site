@@ -1,64 +1,61 @@
-// src/components/LandingText.tsx
 import { Html } from '@react-three/drei'
-import { useThree } from '@react-three/fiber'
-import { useFrame } from '@react-three/fiber'
-import { useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function LandingText() {
-  const { camera } = useThree()
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [style, setStyle] = useState({})
+  const [section, setSection] = useState(0)
 
-  // Follow camera smoothly (optional but more immersive)
-  useFrame(() => {
-    if (containerRef.current) {
-      setStyle({
-        transform: `translate3d(-50%, -50%, 0)`,
-      })
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY
+      const height = window.innerHeight
+      const index = Math.floor(y / height)
+      setSection(index)
     }
-  })
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const messages = [
+    `///// Manifesto
+My mission is to
+build beautiful,
+immersive web
+experiences.
+Blending creativity,
+code, and 3D to
+shape the web of
+tomorrow.`,
+    `///// About Me
+Full-stack dev.
+React | Next.js | Three.js
+Fast learner. 
+Inspired by beautiful
+digital experiences.`,
+    `///// Projects
+• Blueprint App
+• AI Resume Analyzer
+• SecureVault
+• Nakano School System`,
+  ]
 
   return (
-    <>
-      {/* Top Left Text */}
-      <Html position={[-8, 8, -5]} style={{ pointerEvents: 'none' }} center>
-        <div
-          ref={containerRef}
-          style={{
-            ...style,
-            position: 'absolute',
-            top: '5%',
-            left: '5%',
-            color: 'white',
-            fontSize: '1rem',
-            fontFamily: 'monospace',
-            lineHeight: 1.5,
-            whiteSpace: 'pre-line',
-            textAlign: 'left',
-            maxWidth: '200px',
-          }}
-        >
-          {'///// Manifesto\nMy mission is to build beautiful,\nimmersive web\nexperiences.\nBlending creativity,\ncode, and 3D to\nshape the web of\ntomorrow.'}
-        </div>
-      </Html>
-
-      {/* Bottom Right Text */}
-      <Html position={[0, 0, 0]} style={{ pointerEvents: 'none' }} center>
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '5%',
-            right: '5%',
-            color: 'white',
-            fontSize: '0.9rem',
-            fontFamily: 'monospace',
-            textAlign: 'right',
-            whiteSpace: 'pre-line',
-          }}
-        >
-          {'Rish\n© 2024\nALL Rights Reserved\n\nScroll down to discover.\n🔇 Sound: Off'}
-        </div>
-      </Html>
-    </>
+    <Html position={[0, 0, 0]} center>
+      <div
+        style={{
+          position: 'absolute',
+          right: '5%',
+          top: '10%',
+          color: 'white',
+          fontFamily: 'monospace',
+          whiteSpace: 'pre-line',
+          fontSize: '1rem',
+          maxWidth: '220px',
+          textAlign: 'left',
+          pointerEvents: 'none',
+        }}
+      >
+        {messages[section] || messages[messages.length - 1]}
+      </div>
+    </Html>
   )
 }
