@@ -1,10 +1,14 @@
+import AnimeSky from '@/components/AnimeSky'
 import AnimatedPlane from '@/components/AnimatedPlane'
 
 export default function LandingScene() {
   return (
     <>
-      {/* 🛩️ Only the animated plane for now */}
-      <AnimatedPlane position={[0, 2, 0]} scale={0.8} />
+      {/* 🌌 Render sky first so it doesn’t get occluded */}
+      <AnimeSky position={[0, 0, 0]} />
+
+      {/* 🛩️ Plane */}
+      <AnimatedPlane position={[0, 0, 0]}/>
     </>
   )
 }

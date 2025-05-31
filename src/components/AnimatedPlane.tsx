@@ -16,12 +16,7 @@ export default function AnimatedPlane(props: any) {
     }
   }, [actions])
 
-  // Slowly rotate the plane for idle motion
-  useFrame(() => {
-    if (group.current) {
-      group.current.rotation.y += 0.002
-    }
-  })
+
 
   return (
     <group ref={group} {...props} dispose={null}>
