@@ -1,13 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Force full screen layout */
 html,
 body,
 #__next {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-y: scroll; /* allow vertical scroll for camera movement */
 }
