@@ -17,8 +17,7 @@ export default function LandingText() {
 
   const messages = [
     `///// Manifesto
-My mission is to
-build beautiful,
+My mission is to build beautiful,
 immersive web
 experiences.
 Blending creativity,
@@ -39,7 +38,7 @@ digital experiences.`,
   ]
 
   return (
-    <Html position={[0, 0, 0]} center>
+    <Html position={[10, 5, -1]} center>
       <div
         style={{
           position: 'absolute',
@@ -48,7 +47,7 @@ digital experiences.`,
           color: 'white',
           fontFamily: 'monospace',
           whiteSpace: 'pre-line',
-          fontSize: '1rem',
+          fontSize: '1.5rem',
           maxWidth: '220px',
           textAlign: 'left',
           pointerEvents: 'none',
