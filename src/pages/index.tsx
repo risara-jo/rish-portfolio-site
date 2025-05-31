@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import LandingScene from '@/scenes/LandingScene'
+import { ScrollControls } from '@react-three/drei'
 
 export default function Home() {
   return (
@@ -12,9 +13,10 @@ export default function Home() {
       <main className="h-screen w-screen">
       <Canvas
         shadows
-        camera={{ position: [0, 10, 30], fov: 50 }}
-        style={{ background: 'transparent' }} // or '#0a0a0a'
+        camera={{ position: [-10, 15, -20], fov: 25 }} // ← updated
+        style={{ background: 'transparent' }}
         >
+
 
 
           {/* Basic Lighting */}
@@ -32,7 +34,12 @@ export default function Home() {
           {/* Only the plane scene */}
           <LandingScene />
 
-          <OrbitControls />
+          {/* REMOVE or comment out OrbitControls  and add scrolling effects*/}
+          {/* <OrbitControls /> */}
+
+          <ScrollControls pages={3} damping={0.25}>
+          <LandingScene />
+          </ScrollControls>
         </Canvas>
       </main>
     </>
