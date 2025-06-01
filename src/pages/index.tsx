@@ -6,6 +6,7 @@ import LandingScene from '@/scenes/LandingScene'
 import ScrollManager from '@/components/ScrollManager'
 import LandingText from '@/components/LandingText'
 import ProjectsText from '@/components/ProjectsText'
+import ContactText from '@/components/ContactText'
 
 export default function Home() {
   const [section, setSection] = useState(0)
@@ -20,6 +21,7 @@ export default function Home() {
       <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 20, pointerEvents: 'none' }}>
         {section === 0 && <LandingText />}
         {section === 1 && <ProjectsText />}
+        {section === 2 && <ContactText />}
       </div>
 
       {/* ✅ Canvas */}

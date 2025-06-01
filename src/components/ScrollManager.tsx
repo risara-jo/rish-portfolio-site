@@ -25,12 +25,22 @@ export default function ScrollManager({ onSectionChange }: { onSectionChange: (s
   useFrame(() => {
     const scroll = scrollRef.current
 
+    // Scene 1: Landing
     if (scroll < window.innerHeight) {
       camera.position.lerp({ x: 2.81, y: 7.6, z: 15.86 }, 0.1)
       camera.lookAt(0, 0, 0)
-    } else {
+    }
+
+    // Scene 2: Projects
+    else if (scroll >= window.innerHeight && scroll < window.innerHeight * 2) {
       camera.position.lerp({ x: 1.35, y: -138.37, z: 39.24 }, 0.1)
       camera.lookAt(0, 0, 0)
+    }
+
+    // Scene 3: Contact
+    else if (scroll >= window.innerHeight * 2) {
+      camera.position.lerp({ x: 0, y: -250, z: 30 }, 0.1)
+      camera.lookAt(0, -250, 0)
     }
   })
 
