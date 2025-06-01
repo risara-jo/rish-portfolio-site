@@ -3,6 +3,8 @@ import { useThree, useFrame } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
 import AnimeSky from '@/components/AnimeSky'
 import AnimatedPlane from '@/components/AnimatedPlane'
+// Importing PostEffects is optional, uncomment if needed
+// import PostEffects from '@/components/PostEffects'
 
 export default function LandingScene() {
   const { camera } = useThree()
@@ -31,6 +33,7 @@ export default function LandingScene() {
     <>
       <AnimeSky position={[0, 0, 0]} />
       <AnimatedPlane position={[-2, -2, -5]} scale={1.5} rotation={[0, -19, 0]} />
+      
     </>
   )
 }
