@@ -1,39 +1,36 @@
-// src/components/ScrollManager.tsx
 import { useFrame, useThree } from '@react-three/fiber'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
-export default function ScrollManager() {
+export default function ScrollManager({ onSectionChange }: { onSectionChange: (s: number) => void }) {
   const { camera } = useThree()
-  const scrollRef = useRef<number>(0)
+  const scrollRef = useRef(0)
+  const currentSection = useRef(0)
 
   useEffect(() => {
     const handleScroll = () => {
-      scrollRef.current = window.scrollY
+      const scrollY = window.scrollY
+      scrollRef.current = scrollY
+      const section = Math.floor(scrollY / window.innerHeight)
+
+      if (section !== currentSection.current) {
+        currentSection.current = section
+        onSectionChange(section)
+      }
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [onSectionChange])
 
   useFrame(() => {
     const scroll = scrollRef.current
 
-    // SECTION 1: Top (0–300)
-    if (scroll < 300) {
-      camera.position.lerp({ x: -10, y: 15, z: -20 }, 0.1)
-      camera.lookAt(0, 0, -5)
-    }
-
-    // SECTION 2: Middle (300–800)
-    else if (scroll < 800) {
-      camera.position.lerp({ x: 0, y: 10, z: -10 }, 0.1)
-      camera.lookAt(0, 0, -5)
-    }
-
-    // SECTION 3: Bottom (800+)
-    else {
-      camera.position.lerp({ x: 10, y: 5, z: 0 }, 0.1)
-      camera.lookAt(0, 0, -5)
+    if (scroll < window.innerHeight) {
+      camera.position.lerp({ x: 2.81, y: 7.6, z: 15.86 }, 0.1)
+      camera.lookAt(0, 0, 0)
+    } else {
+      camera.position.lerp({ x: 1.35, y: -138.37, z: 39.24 }, 0.1)
+      camera.lookAt(0, 0, 0)
     }
   })
 

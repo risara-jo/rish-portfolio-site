@@ -1,9 +1,8 @@
-// src/scenes/LandingScene.tsx
+// ✅ FIXED LandingScene.tsx
 import { useThree, useFrame } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
 import AnimeSky from '@/components/AnimeSky'
 import AnimatedPlane from '@/components/AnimatedPlane'
-import LandingText from '@/components/LandingText'
 
 export default function LandingScene() {
   const { camera } = useThree()
@@ -24,15 +23,14 @@ export default function LandingScene() {
     const radius = 20
     camera.position.x = Math.sin(angle) * radius
     camera.position.z = Math.cos(angle) * radius
-    camera.position.y = 10 + Math.sin(angle * 0.5) * 10 // slight vertical curve
-    camera.lookAt(0, 3, -5) 
+    camera.position.y = 10 + Math.sin(angle * 0.5) * 10
+    camera.lookAt(0, 3, -5)
   })
 
   return (
     <>
       <AnimeSky position={[0, 0, 0]} />
       <AnimatedPlane position={[-2, -2, -5]} scale={1.5} rotation={[0, -19, 0]} />
-      <LandingText />
     </>
   )
 }
