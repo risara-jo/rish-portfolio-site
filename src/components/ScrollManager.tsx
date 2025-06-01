@@ -27,20 +27,20 @@ export default function ScrollManager({ onSectionChange }: { onSectionChange: (s
 
     // Scene 1: Landing
     if (scroll < window.innerHeight) {
-      camera.position.lerp({ x: 2.81, y: 7.6, z: 15.86 }, 0.1)
-      camera.lookAt(0, 0, 0)
+      camera.position.lerp({ x: 2.81, y: 7.6, z: 15.86 }, 0.5)
+      camera.lookAt(0, 4, 0)
     }
 
     // Scene 2: Projects
     else if (scroll >= window.innerHeight && scroll < window.innerHeight * 2) {
-      camera.position.lerp({ x: 1.35, y: -138.37, z: 39.24 }, 0.1)
-      camera.lookAt(0, 0, 0)
+      camera.position.lerp({ x: 100, y: -450, z: 50 }, 0.1)
+      camera.lookAt(0, 10, 0)
     }
 
     // Scene 3: Contact
     else if (scroll >= window.innerHeight * 2) {
-      camera.position.lerp({ x: 0, y: -250, z: 30 }, 0.1)
-      camera.lookAt(0, -250, 0)
+      camera.position.lerp({ x: 2.81, y: 100, z: 15.86 }, 0.5)
+      camera.lookAt(-1, 0, 2)
     }
   })
 
