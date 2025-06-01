@@ -18,7 +18,8 @@ export default function ContactText() {
         <div
           style={{
             maxWidth: '800px',
-            margin: '0 auto',
+            left: '60px',
+            top: '60px',
             display: 'flex',
             flexDirection: 'column',
             gap: '40px',
@@ -26,7 +27,7 @@ export default function ContactText() {
           }}
         >
           {/* Heading */}
-          <h1 style={{ fontSize: '3rem', fontWeight: 'bold' }}>Get in touch</h1>
+          <h1 style={{ fontSize: '4rem', fontWeight: 'bold' }}>Get in touch</h1>
   
           {/* Contact Info Box */}
           <div
@@ -38,8 +39,9 @@ export default function ContactText() {
               width: 'fit-content',
             }}
           >
-            <div>E-mail: risharajl11234@gmail.com</div>
-            <div>Phone: +94(76) 403 0111</div>
+            <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>Contact information</div>
+            <div><strong>E-mail:</strong> risharajl11234@gmail.com</div>
+            <div><strong>Phone:</strong> +94(76) 403 0111</div>
           </div>
   
           {/* Contact Form */}
@@ -47,15 +49,18 @@ export default function ContactText() {
             style={{
               background: '#e5e5e5',
               border: '2px solid black',
-              padding: '20px',
+              padding: '30px',
               display: 'flex',
               flexDirection: 'column',
               gap: '16px',
             }}
           >
+            <h3 style={{ fontWeight: 'bold', fontSize: '1.2rem', marginBottom: '8px' }}>
+              Send me a message...
+            </h3>
             <input placeholder="Name" style={inputStyle} />
             <input placeholder="E-mail" style={inputStyle} />
-            <textarea placeholder="Message" rows={5} style={inputStyle} />
+            <textarea placeholder="Message" rows={6} style={inputStyle} />
             <button type="submit" style={sendButtonStyle}>
               Send
             </button>
@@ -92,7 +97,7 @@ export default function ContactText() {
     padding: '10px',
     fontFamily: 'monospace',
     fontSize: '1rem',
-    width: '100%',
+    width: '96%',
   }
   
   const sendButtonStyle = {
