@@ -7,6 +7,8 @@ import ScrollManager from '@/components/ScrollManager'
 import LandingText from '@/components/LandingText'
 import ProjectsText from '@/components/ProjectsText'
 import ContactText from '@/components/ContactText'
+import SceneIndicator from '@/components/SceneIndicator'
+
 
 export default function Home() {
   const [section, setSection] = useState(0)
@@ -23,6 +25,8 @@ export default function Home() {
         {section === 1 && <ProjectsText />}
         {section === 2 && <ContactText />}
       </div>
+      <SceneIndicator currentSection={section} />
+
 
       {/* ✅ Canvas */}
       <Canvas
