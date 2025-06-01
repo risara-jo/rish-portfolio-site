@@ -13,14 +13,13 @@ export default function ProjectsText() {
       fontFamily: 'monospace',
       color: 'black',
       pointerEvents: 'none',
-      zIndex: 20
+      zIndex: 20,
+      padding: '40px',
+      boxSizing: 'border-box'
     }}>
       {/* Title */}
       <div style={{
-        position: 'absolute',
-        top: '40px',
-        left: '50%',
-        transform: 'translateX(-50%)',
+        textAlign: 'center',
         fontSize: '2.5rem',
         fontWeight: 'bold'
       }}>
@@ -29,18 +28,15 @@ export default function ProjectsText() {
 
       {/* Tabs */}
       <div style={{
-        position: 'absolute',
-        top: '100px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        display: 'flex',
-        gap: '12px',
+        marginTop: '20px',
+        textAlign: 'center',
         pointerEvents: 'auto'
       }}>
         <button
           onClick={() => setActiveTab('cs')}
           style={{
             padding: '10px 20px',
+            marginRight: '10px',
             fontSize: '1rem',
             fontFamily: 'monospace',
             background: activeTab === 'cs' ? 'black' : 'gray',
@@ -67,14 +63,11 @@ export default function ProjectsText() {
 
       {/* Project Cards */}
       <div style={{
-        position: 'absolute',
-        top: '180px',
-        left: '50%',
-        transform: 'translateX(-50%)',
+        marginTop: '40px',
         display: 'flex',
-        flexWrap: 'wrap',
-        gap: '40px',
         justifyContent: 'center',
+        gap: '40px',
+        flexWrap: 'wrap',
         pointerEvents: 'auto'
       }}>
         {activeTab === 'cs' && <>
@@ -107,6 +100,40 @@ export default function ProjectsText() {
           </div>
         </>}
       </div>
+
+      {/* Tech Stack Section */}
+      {activeTab === 'cs' && (
+        <div style={{
+          marginTop: '80px',
+          textAlign: 'center',
+          fontSize: '1.5rem',
+          fontWeight: 'bold',
+          pointerEvents: 'auto'
+        }}>
+          Technologies I Use
+          <div style={{
+            marginTop: '20px',
+            display: 'flex',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            gap: '12px'
+          }}>
+            {[
+              'React', 'Next.js', 'Flutter',
+              'Spring Boot', 'Node.js',
+              'MongoDB', 'Python', 'TailwindCSS', 'Three.js','Java'
+            ].map((tech, i) => (
+              <span key={i} style={{
+                background: '#000',
+                color: '#fff',
+                padding: '8px 14px',
+                fontSize: '0.9rem',
+                borderRadius: '4px'
+              }}>{tech}</span>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
