@@ -24,15 +24,15 @@ export default function LandingScene() {
 
     const radius = 20
     camera.position.x = Math.sin(angle) * radius
-    camera.position.z = Math.cos(angle) * radius
-    camera.position.y = 10 + Math.sin(angle * 0.5) * 10
+    camera.position.z = 10+ Math.cos(angle) * radius 
+    camera.position.y = 10 + Math.sin(angle * 0.5) * 5
     camera.lookAt(0, 3, -5)
   })
 
   return (
     <>
       <AnimeSky position={[0, 0, 0]} />
-      <AnimatedPlane position={[-2, -2, -5]} scale={1.5} rotation={[0, -19, 0]} />
+      <AnimatedPlane position={[-2, -7, -5]} scale={2} rotation={[0, -19, 0]} />
       
     </>
   )

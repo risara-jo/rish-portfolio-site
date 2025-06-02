@@ -1,4 +1,4 @@
-// src/components/PostEffects.tsx
+// src/components/PostEffects.tsx not in use...
 import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
 import { BlendFunction } from 'postprocessing'
 
