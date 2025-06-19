@@ -67,9 +67,9 @@ export default function ScrollManager({ onSectionChange }: { onSectionChange: (s
         // Scene 3
         if (section === 2) {
           moveCamera(
-            new THREE.Vector3(2.81, 100, 15.86),
-            new THREE.Vector3(-1, -5, 5),
-            55
+            new THREE.Vector3(0,0,0),
+            new THREE.Vector3(-1, -5, -5),
+            50
           )
         }
       }
